@@ -1,0 +1,89 @@
+---
+title: "Scatterplots in R"
+author: "ashin"
+date: "05/05/2020"
+output:
+  word_document: default
+---
+
+
+Here we will look how to create scatterplots using R language
+So lets Start.
+Library used= ggplot2
+(to install, install.packages("ggplot2"))
+Dataset=mtcars(Inbuilt)
+
+
+## Basic Scatter Plot
+
+
+
+```{r}
+library(ggplot2)
+ ggplot(mtcars, aes(x=mpg,y=wt))+geom_point(shape=19)
+```
+ 
+
+This code gives the basic scatter plot.
+
+
+## By adding a 3rd variable
+
+
+```{r}
+library(ggplot2)
+mtcars$cylFactor <- factor(mtcars$cyl)
+ggplot(mtcars, aes(x=mpg,y=wt,shape=cylFactor)) + geom_point()
+```
+
+## Adding the desired colour to the plot
+
+
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(x=mpg,y=wt,colour="red")) + geom_point()
+
+```
+
+By this we can add a desired colour to the plot.
+
+## Combining the 3rd variable and colour
+
+```{r}
+library(ggplot2)
+mtcars$cylFactor <- factor(mtcars$cyl)
+ ggplot(mtcars, aes(x=mpg,y=wt,shape=cylFactor,colour="red")) + geom_point()
+```
+
+Here we are able to see that colour does not affect much when wee add a 3rd variable here.Now lets check how we can add a 3rd varible by defining colour.
+
+## Add a 3rd variable by colour
+
+
+
+```{r}
+library(ggplot2)
+mtcars$cylFactor <- factor(mtcars$cyl)
+ggplot(mtcars, aes(x=mpg,y=wt,colour=cylFactor)) + geom_point()
+```
+This looks good. Now lets label all the axis and complete the scatter plot
+
+
+## Final Plot
+
+
+
+
+```{r}
+library(ggplot2)
+mtcars$cylFactor <- factor(mtcars$cyl)
+ggplot(mtcars,aes(x=mpg,y=wt,color=cylFactor))  +geom_point(shape=19) +xlab("Miles Per Gallon") +ylab("Weight") +labs(colour = "Cylinders") +ggtitle("Scatterplot")
+```
+
+
+By this we have come across how to create scatterplot using r language and I hope everyone got this.
+
+
+
+
